@@ -38,4 +38,12 @@ public class ToastModule extends ReactContextBaseJavaModule {
         Toast.makeText(getReactApplicationContext(), message, duration).show();
     }
 
+    @ReactMethod
+    public void show(String user, String password) {
+
+
+
+        //Toast.makeText(getReactApplicationContext(), message, duration).show();
+    }
+
 }
