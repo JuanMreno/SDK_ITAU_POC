@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View, NativeModules, Alert, Button} from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -19,11 +19,51 @@ const instructions = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
   render() {
+    const CalendarManager = NativeModules.CalendarManager;
+
+    CalendarManager.setData('Itau-test');  
+
+    CalendarManager.requestData(
+      'Itau-test'//, 
+      /*
+      (error, events) => {
+        if (error) {
+          console.error(error);
+        } else {
+          Alert.alert(events);
+        }
+      }
+      */
+    );
+    
+    /*
+    CalendarManager.findEvents((error, events) => {
+      if (error) {
+        console.error(error);
+      } else {
+        Alert.alert(events);
+      }
+    });
+    */
+
+
+
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <Button
+          onPress={() => {
+            CalendarManager.getData((error, events) => {
+              if (error) {
+                console.error(error);
+              } else {
+                Alert.alert(events);
+              }
+            });            
+          }}
+          title="Learn More"
+          color="#841584"
+          accessibilityLabel="Learn more about this purple button"
+        />
       </View>
     );
   }
