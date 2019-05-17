@@ -2,24 +2,19 @@
 //  CalendarManager.m
 //  SDK_ITAU
 //
-//  Created by Juan Camilo Moreno Ruiz on 5/16/19.
+//  Created by Juan Camilo Moreno Ruiz on 5/17/19.
 //  Copyright © 2019 Facebook. All rights reserved.
 //
 
-//#import <Foundation/Foundation.h>
-//#import "CalendarManager.h"
-//#import <React/RCTLog.h>
-//#import <React/RCTBridgeModule.h>
-#import "SDK_ITAU-Bridging-Header.h"
+#import <Foundation/Foundation.h>
+#import "CalendarManager.h"
+#import <React/RCTLog.h>
 
-@interface RCT_EXTERN_MODULE(CalendarManager, NSObject)
-RCT_EXPORT_METHOD(requestData:(NSString *)name);
+@implementation CalendarManager
 
-//RCT_EXPORT_METHOD(requestData:(NSString *)name :(RCTResponseSenderBlock)callback);
-
-/*
 NSString *data = @"";
 
+// To export a module named CalendarManager
 RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(getData:(RCTResponseSenderBlock)callback)
@@ -41,7 +36,5 @@ RCT_EXPORT_METHOD(requestData:(NSString *)name :(RCTResponseSenderBlock)callback
   
   callback(@[[NSNull null], str]);
 }
-*/
-
 
 @end

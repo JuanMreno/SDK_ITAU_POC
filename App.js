@@ -8,6 +8,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, NativeModules, Alert, Button} from 'react-native';
+import ToastExample from './native-toast-module';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -19,53 +20,34 @@ const instructions = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
   render() {
-    const CalendarManager = NativeModules.CalendarManager;
-
-    CalendarManager.setData('Itau-test');  
-
-    CalendarManager.requestData(
-      'Itau-test'//, 
-      /*
-      (error, events) => {
-        if (error) {
-          console.error(error);
-        } else {
-          Alert.alert(events);
-        }
-      }
-      */
-    );
-    
-    /*
-    CalendarManager.findEvents((error, events) => {
-      if (error) {
-        console.error(error);
-      } else {
-        Alert.alert(events);
-      }
-    });
-    */
-
-
-
     return (
       <View style={styles.container}>
+        <Text numberOfLines={5}>
+          Example Text
+        </Text>
         <Button
-          onPress={() => {
-            CalendarManager.getData((error, events) => {
-              if (error) {
-                console.error(error);
-              } else {
-                Alert.alert(events);
-              }
-            });            
-          }}
+          onPress={nativeRequest}
           title="Learn More"
           color="#841584"
           accessibilityLabel="Learn more about this purple button"
         />
       </View>
     );
+  }
+}
+
+function nativeRequest() {
+  if(Platform.OS === 'ios') {
+    CalendarManager.getData((error, events) => {
+      if (error) {
+        console.error(error);
+      } else {
+        Alert.alert(events);
+      }
+    });  
+  }
+  else {
+    ToastExample.show('Awesome', ToastExample.SHORT);
   }
 }
 
