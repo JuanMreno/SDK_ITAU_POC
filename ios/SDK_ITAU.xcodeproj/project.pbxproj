@@ -37,7 +37,8 @@
 		2DCD954D1E0B4F2C00145EB5 /* SDK_ITAUTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SDK_ITAUTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		3A633B14228DC3C10052654D /* libRNMyLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A633B13228DC3AC0052654D /* libRNMyLibrary.a */; };
-		3A633B3B228F014E0052654D /* CalendarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A633B3A228F014E0052654D /* CalendarManager.m */; };
+		3AB5CBBB2294254A00A36181 /* SdkModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB5CBBA2294254A00A36181 /* SdkModule.m */; };
+		3AB5CBBF229425B300A36181 /* SdkModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB5CBBE229425B300A36181 /* SdkModule.swift */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
@@ -351,8 +352,9 @@
 		2D02E4901E0B4A5D006451C7 /* SDK_ITAU-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SDK_ITAU-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A633AE1228DC3AB0052654D /* RNMyLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNMyLibrary.xcodeproj; path = "../node_modules/react-native-my-library/ios/RNMyLibrary.xcodeproj"; sourceTree = "<group>"; };
-		3A633B39228F01320052654D /* CalendarManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarManager.h; sourceTree = "<group>"; };
-		3A633B3A228F014E0052654D /* CalendarManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarManager.m; sourceTree = "<group>"; };
+		3AB5CBBA2294254A00A36181 /* SdkModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SdkModule.m; sourceTree = "<group>"; };
+		3AB5CBBE229425B300A36181 /* SdkModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SdkModule.swift; sourceTree = "<group>"; };
+		3AB5CBC02294282700A36181 /* SDK_ITAU-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SDK_ITAU-Bridging-Header.h"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
@@ -507,8 +509,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
-				3A633B39228F01320052654D /* CalendarManager.h */,
-				3A633B3A228F014E0052654D /* CalendarManager.m */,
+				3AB5CBBA2294254A00A36181 /* SdkModule.m */,
+				3AB5CBBE229425B300A36181 /* SdkModule.swift */,
+				3AB5CBC02294282700A36181 /* SDK_ITAU-Bridging-Header.h */,
 			);
 			name = SDK_ITAU;
 			sourceTree = "<group>";
@@ -1128,7 +1131,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1160,8 +1163,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				3AB5CBBB2294254A00A36181 /* SdkModule.m in Sources */,
+				3AB5CBBF229425B300A36181 /* SdkModule.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				3A633B3B228F014E0052654D /* CalendarManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1213,6 +1217,7 @@
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1234,6 +1239,7 @@
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = SDK_ITAUTests/Info.plist;
