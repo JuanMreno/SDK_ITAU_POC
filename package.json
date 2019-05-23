@@ -10,6 +10,7 @@
   "dependencies": {
     "react": "16.8.3",
     "react-native": "0.59.8",
+    "react-native-fingerprint-scanner": "^2.5.0",
     "react-native-my-library": "^1.0.2"
   },
   "devDependencies": {

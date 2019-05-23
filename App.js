@@ -9,6 +9,10 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, NativeModules, Alert, Button} from 'react-native';
 import ToastExample from './native-toast-module';
+//import FingerprintPopup from './components/fingerprint-popup'
+//import stylesFp from './styles/Application.container.styles'
+
+import FingerprintScanner from 'react-native-fingerprint-scanner';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -18,7 +22,28 @@ const instructions = Platform.select({
 });
 
 type Props = {};
+
 export default class App extends Component<Props> {
+
+  
+  /*
+  constructor(props) {
+    super(props);
+    this.state = {
+      errorMessage: undefined,
+      popupShowed: false
+    };
+  }
+  */
+
+  handleFingerprintShowed = () => {
+    this.setState({ popupShowed: true });
+  };
+
+  handleFingerprintDismissed = () => {
+    this.setState({ popupShowed: false });
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -27,10 +52,26 @@ export default class App extends Component<Props> {
         </Text>
         <Button
           onPress={nativeRequest}
-          title="Learn More"
+          title="Native Request"
           color="#841584"
-          accessibilityLabel="Learn more about this purple button"
         />
+        <Button
+          onPress={fingerprintRequest}
+          title="Fingerprint Request"
+          color="#841584"
+        />
+        <Button
+          onPress={fpSupportRequest}
+          title="Fingerprint Request"
+          color="#841584"
+        />
+
+        {/* {popupShowed && (
+          <FingerprintPopup
+            style={stylesFp.popup}
+            handlePopupDismissed={this.handleFingerprintDismissed}
+          />
+        )} */}
       </View>
     );
   }
@@ -49,6 +90,26 @@ function nativeRequest() {
   else {
     ToastExample.show('Awesome', ToastExample.SHORT);
   }
+}
+
+function fingerprintRequest() {
+  FingerprintScanner
+    .authenticate({ description: 'Scan your fingerprint on the device scanner to continue - -' })
+    .then(() => {
+      console.log('AppSdkItau -> ' + 'Authenticated successfully');
+    })
+    .catch((error) => {
+      console.log('AppSdkItau -> ' + 'fingerprintRequest Error');
+      console.log('AppSdkItau -> ' + JSON.stringify(error));
+      Alert.alert(error.message);
+    });
+}
+
+function fpSupportRequest() {
+  FingerprintScanner
+    .isSensorAvailable()
+    .then(biometryType => console.log('AppSdkItau -> ' + JSON.stringify(biometryType)))
+    .catch(error => console.log('AppSdkItau -> ' + JSON.stringify(error)));
 }
 
 const styles = StyleSheet.create({
